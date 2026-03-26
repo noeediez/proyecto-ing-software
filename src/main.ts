@@ -1,5 +1,6 @@
 import { Contenido } from "./contenido";
 import { IReproductorMusica, IMarcarFavorito } from "./interfaces";
+import { Album } from "./album";
 
 class Cancion extends Contenido implements IReproductorMusica, IMarcarFavorito { // clase 
     private esFavorito: boolean = false;
@@ -54,10 +55,12 @@ class PlataformaDeMusica { // clase
 
 const cancion1 = new Cancion("The Subway", "Chappell Roan", 4.1); // instancia de la clase Cancion
 const cancion2 = new Cancion("What Was That", "Lorde", 4.3); // instancia de la clase Cancion
+const album1 = new Album ("Pure Heroine", "Lorde", 42); // instancia de la clase Album
 
 const plataforma = new PlataformaDeMusica(); // instancia de la clase PlataformadeMusica
 
 plataforma.agregarCancion(cancion1);
 plataforma.agregarCancion(cancion2);
+plataforma.agregarCancion(album1);
 
 console.log(plataforma.mostrarCanciones()); //console log sirve para mostrar la informacion de las canciones 
