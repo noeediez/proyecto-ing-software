@@ -18,5 +18,8 @@ class Album extends contenido_1.Contenido {
     avanzar() {
         return `Siguiente canción en: ${this.titulo}`;
     }
+    mostrarInfo() {
+        return `Album: ${this.titulo} | Artista: ${this.artista} | Duracion: ${this.duracion} minutos`;
+    }
 }
 exports.Album = Album;

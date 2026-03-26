@@ -1,4 +1,5 @@
-export abstract class Contenido {
+import {IMarcarFavorito } from "./interfaces";
+export abstract class Contenido implements IMarcarFavorito {
     protected esFavorito: boolean = false;
     protected enReproduccion: boolean = false;
 
@@ -16,7 +17,7 @@ export abstract class Contenido {
 
     public marcarComoFavorito(): string {
         this.esFavorito = true;
-        return `${this.titulo} marcado como favorito`;
+        return `${this.titulo} se marcó como favorito`;
     }
 
     public desmarcarFavorito(): void {

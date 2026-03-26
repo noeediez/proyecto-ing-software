@@ -20,4 +20,7 @@ export class Album extends Contenido implements IReproductorMusica {
     public avanzar(): string {
         return `Siguiente canción en: ${this.titulo}`;
     }
+       public mostrarInfo(): string {
+        return `Album: ${this.titulo} | Artista: ${this.artista} | Duracion: ${this.duracion} minutos`;
+    }
 }
