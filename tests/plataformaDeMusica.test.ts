@@ -1,26 +1,35 @@
-/// <reference types="vitest" />
-import { describe, test, beforeEach, expect } from 'vitest';
-import { Cancion } from "../src/cancion";
-import { PlataformaDeMusica } from "../src/plataformaDeMusica";
+import { PlataformaDeMusica } from '../src/plataformaDeMusica';
+import { Cancion } from '../src/cancion';
+import { describe, it, expect } from 'vitest';
 
-describe("PlataformaDeMusica", () => { 
-    let plataforma: PlataformaDeMusica;
-    let cancion1: Cancion;
-    let cancion2: Cancion;
-    let cancion3: Cancion;
+describe('PlataformaDeMusica', () => {
+    it('deberia agregar canciones y mostrar su informacion', () => {
+        const plataforma = new PlataformaDeMusica();
+        const cancion1 = new Cancion("The Subway", "Chappell Roan", 4.1);
+        const cancion2 = new Cancion("What Was That", "Lorde", 4.3);
 
-    beforeEach(() => {
-        plataforma = new PlataformaDeMusica();
-        cancion1 = new Cancion("The Subway", "Chappell Roan", 4.1);
-        cancion2 = new Cancion("What Was That", "Lorde", 4.3);
-        cancion3 = new Cancion("Anti-Hero", "Taylor Swift", 3.2);
+        plataforma.agregarCancion(cancion1);
+        plataforma.agregarCancion(cancion2);
+
+        const resultado = plataforma.mostrarCanciones();
+        const esperado = `${cancion1.mostrarInfo()}\n${cancion2.mostrarInfo()}`;
+
+        expect(resultado).toBe(esperado);
     });
 
-    describe("Agregar y mostrar canciones", () => {
-        test("agregarCancion y mostrarCanciones", () => {
-            plataforma.agregarCancion(cancion1);
-            plataforma.agregarCancion(cancion2);
-            const resultado = plataforma.mostrarCanciones();
-            expect(resultado).toContain("The Subway");
-            expect(resultado).toContain("What Was That");
-        });
+    it('deberia buscar canciones por titulo y artista', () => {
+        const plataforma = new PlataformaDeMusica();
+
+        const resultado1 = plataforma.buscar("Manchild");
+        const resultado2 = plataforma.buscar("Manchild", "Sabrina Carpenter");
+
+        expect(resultado1).toBe('Buscando la cancion "Manchild"');
+        expect(resultado2).toBe('Buscando la cancion "Manchild" del artista Sabrina Carpenter');
+    });
+    it('deberia devolver vacio si no hay canciones', () => {
+    const plataforma = new PlataformaDeMusica();
+
+    expect(plataforma.mostrarCanciones()).toBe('');
+    });
+    
+});
