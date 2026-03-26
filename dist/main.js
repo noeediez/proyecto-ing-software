@@ -3,14 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const contenido_1 = require("./contenido");
 const album_1 = require("./album");
 class Cancion extends contenido_1.Contenido {
-    constructor() {
-        super(...arguments);
-        this.esFavorito = false;
-        this.enReproduccion = false;
-    }
-    marcarComoFavorito() {
-        this.esFavorito = true;
-        return `${this.titulo} marcada como favorito`;
+    reproducir() {
+        this.enReproduccion = true;
+        return `Reproduciendo: ${this.titulo} de ${this.artista}`;
     }
     pausar() {
         this.enReproduccion = false;
@@ -23,19 +18,6 @@ class Cancion extends contenido_1.Contenido {
     avanzar() {
         return `Avanzando en: ${this.titulo}`;
     }
-    mostrarInfo() {
-        return `Titulo: ${this.titulo} | Artista: ${this.artista} | Duracion: ${this.duracion} minutos`;
-    }
-    reproducir() {
-        this.enReproduccion = true;
-        return `Reproduciendo: ${this.titulo} de ${this.artista}`;
-    }
-    marcarFavorito() {
-        this.esFavorito = true;
-    }
-    desmarcarFavorito() {
-        this.esFavorito = false;
-    }
 }
 class PlataformaDeMusica {
     constructor() {
@@ -47,12 +29,20 @@ class PlataformaDeMusica {
     mostrarCanciones() {
         return this.canciones.map(c => c.mostrarInfo()).join("\n");
     }
+    buscar(titulo, artista) {
+        if (artista) {
+            return `Buscando la canción "${titulo}" del artista ${artista}`;
+        }
+        return `Buscando la canción "${titulo}"`;
+    }
 }
-const cancion1 = new Cancion("The Subway", "Chappell Roan", 4.1); // instancia de la clase Cancion
-const cancion2 = new Cancion("What Was That", "Lorde", 4.3); // instancia de la clase Cancion
-const album1 = new album_1.Album("Pure Heroine", "Lorde", 42); // instancia de la clase Album
-const plataforma = new PlataformaDeMusica(); // instancia de la clase PlataformadeMusica
+const cancion1 = new Cancion("The Subway", "Chappell Roan", 4.1);
+const cancion2 = new Cancion("What Was That", "Lorde", 4.3);
+const album1 = new album_1.Album("Pure Heroine", "Lorde", 42);
+const plataforma = new PlataformaDeMusica();
 plataforma.agregarCancion(cancion1);
 plataforma.agregarCancion(cancion2);
 plataforma.agregarCancion(album1);
-console.log(plataforma.mostrarCanciones()); //console log sirve para mostrar la informacion de las canciones 
+console.log(plataforma.mostrarCanciones());
+console.log(plataforma.buscar("The Subway"));
+console.log(plataforma.buscar("The Subway", "Chappell Roan"));
