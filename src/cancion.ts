@@ -1,20 +1,20 @@
 import { Contenido } from "./contenido";
 import { IReproductorMusica } from "./interfaces";
 
-export class Cancion extends Contenido implements IReproductorMusica {
-    public reproducir(): string {
+export class Cancion extends Contenido implements IReproductorMusica { //hereda de contenido y implementa la interfaz de reproductor de musica
+    public reproducir(): string { 
         this.enReproduccion = true;
         return `Reproduciendo: ${this.titulo} de ${this.artista}`;
     }
 
-    public pausar(): string {
+    public pausar(): string { 
         this.enReproduccion = false;
-        return `Pausada: ${this.titulo}`;
+        return `Cancion pausada: ${this.titulo}`;
     }
 
     public detener(): string {
         this.enReproduccion = false;
-        return `Detenida: ${this.titulo}`;
+        return `Cancion detenida: ${this.titulo}`;
     }
 
     public avanzar(): string {

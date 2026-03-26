@@ -14,7 +14,7 @@ class Contenido {
     }
     marcarComoFavorito() {
         this.esFavorito = true;
-        return `${this.titulo} marcado como favorito`;
+        return `${this.titulo} se marcó como favorito`;
     }
     desmarcarFavorito() {
         this.esFavorito = false;

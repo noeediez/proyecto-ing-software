@@ -23,7 +23,8 @@
   "homepage": "https://github.com/noeediez/proyecto-ing-software#readme",
   "devDependencies": {
     "@types/node": "^25.5.0",
+    "@vitest/ui": "^4.1.2",
     "typescript": "^6.0.2",
-    "vitest": "^4.1.1"
+    "vitest": "^4.1.2"
   }
 }
