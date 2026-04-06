@@ -1,30 +1,31 @@
-import {IMarcarFavorito } from "./interfaces";
+import { IMarcarFavorito } from "./interfaces";
+
 export abstract class Contenido implements IMarcarFavorito {
     protected esFavorito: boolean = false;
     protected enReproduccion: boolean = false;
 
-    constructor( // constructor para inicializar las propiedades de la clase contenido
+    constructor(
         protected titulo: string,
         protected artista: string,
         protected duracion: number
     ) {}
 
-    public mostrarInfo(): string { //metodo
+    public mostrarInfo(): string { 
         return `Titulo: ${this.titulo} | Artista: ${this.artista} | Duracion: ${this.duracion} minutos`;
     }
 
-    public abstract reproducir(): string;
+    public abstract reproducir(): string; // metodo abstracto porque cada clase hija lo implementara de diferente manera
 
-    public marcarComoFavorito(): string { //x2
+    public marcarComoFavorito(): string { 
         this.esFavorito = true;
         return `${this.titulo} se marcó como favorito`;
     }
 
-    public desmarcarFavorito(): void { //x3
+    public desmarcarFavorito(): void {
         this.esFavorito = false;
     }
 
-    public isFavorito(): boolean { //x4
+    public isFavorito(): boolean {
         return this.esFavorito;
     }
 }

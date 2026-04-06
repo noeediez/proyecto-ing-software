@@ -11,7 +11,7 @@ describe('Contenido (a traves de Cancion)', () => {
     const cancion = new Cancion('Drivers License', 'Olivia Rodrigo', 4.2);
     expect(cancion.isFavorito()).toBe(false);
 
-    expect(cancion.marcarComoFavorito()).toBe('Drivers License se marco como favorito');
+    expect(cancion.marcarComoFavorito()).toBe('Drivers License se marcó como favorito');
     expect(cancion.isFavorito()).toBe(true);
 
     cancion.desmarcarFavorito();
